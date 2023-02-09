@@ -13,7 +13,7 @@ COPY ./tsconfig.app.json .
 RUN npm install -g @angular/cli@13
 RUN npm ci
 
-RUN ng build
+RUN npm run build
 
 FROM nginx:latest as deploy
 

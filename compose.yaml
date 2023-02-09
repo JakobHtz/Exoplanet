@@ -1,6 +1,6 @@
 services:
   frontend:
-    build: ./application/exowebapp
+    image: exowebapp
     depends_on:
       - mariadb
     ports:
