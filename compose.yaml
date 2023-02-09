@@ -1,0 +1,20 @@
+services:
+  frontend:
+    build: ./application/exowebapp
+    depends_on:
+      - mariadb
+    ports:
+      - "8080:80"
+
+  mariadb:
+    image: mariadb
+    ports:
+      - "3306:3306"
+    environment:
+      - MARIADB_ROOT_PASSWORD=test
+    volumes:
+      - mariadb:/var/lib/mysql
+
+volumes:
+  mariadb:
+    name: "exodb"
