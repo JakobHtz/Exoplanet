@@ -5,6 +5,7 @@ ENV MARIADB_ADDR=host.docker.internal
 COPY ./src/ ./src/
 COPY ./package.json .
 COPY ./package-lock.json .
+COPY ./init.sql .
 
 RUN npm ci
 

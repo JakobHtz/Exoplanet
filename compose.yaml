@@ -22,7 +22,9 @@ services:
     ports:
       - "8081:8081"
     environment:
-      - MARIADB_ADDR=mariadb
+      - MARIADB_ADDR=exodb
+    links:
+      - "mariadb:exodb"
 
 volumes:
   mariadb:
