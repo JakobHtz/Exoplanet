@@ -10,6 +10,7 @@ import { MainHeaderComponent } from './components/main-header/main-header.compon
 import { PlanetDataTableComponent } from './components/planet-data-table/planet-data-table.component';
 import { RobotDataTableComponent } from './components/robot-data-table/robot-data-table.component';
 import { PlanetDataPageComponent } from './pages/planet-data-page/planet-data-page.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 const routes: Routes = [
   { path: 'home', component: LandingPageComponent },
@@ -33,6 +34,7 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
+    NoopAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

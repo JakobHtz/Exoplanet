@@ -5,6 +5,8 @@ services:
       - mariadb
     ports:
       - "8080:80"
+    links:
+      - "mariadb:exodb"
 
   mariadb:
     image: mariadb
