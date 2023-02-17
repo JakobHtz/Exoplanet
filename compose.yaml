@@ -5,8 +5,6 @@ services:
       - mariadb
     ports:
       - "8080:80"
-    links:
-      - "mariadb:exodb"
 
   mariadb:
     image: mariadb
@@ -24,9 +22,7 @@ services:
     ports:
       - "8081:8081"
     environment:
-      - MARIADB_ADDR=exodb
-    links:
-      - "mariadb:exodb"
+      - MARIADB_ADDR=mariadb
 
 volumes:
   mariadb:

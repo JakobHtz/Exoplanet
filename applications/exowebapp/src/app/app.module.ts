@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+import { MatTableModule } from '@angular/material/table';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { UnknownPathComponent } from './pages/unknown-path/unknown-path.component';
@@ -10,7 +13,6 @@ import { MainHeaderComponent } from './components/main-header/main-header.compon
 import { PlanetDataTableComponent } from './components/planet-data-table/planet-data-table.component';
 import { RobotDataTableComponent } from './components/robot-data-table/robot-data-table.component';
 import { PlanetDataPageComponent } from './pages/planet-data-page/planet-data-page.component';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 const routes: Routes = [
   { path: 'home', component: LandingPageComponent },
@@ -35,6 +37,8 @@ const routes: Routes = [
     BrowserModule,
     RouterModule.forRoot(routes),
     NoopAnimationsModule,
+    HttpClientModule,
+    MatTableModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
