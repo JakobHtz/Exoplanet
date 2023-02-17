@@ -24,8 +24,8 @@ console.log("Database created or exists.");
 connection.query('USE ' + database + ";");
 console.log("Database used: " + database);
 
-connection.query("CREATE TABLE IF NOT EXISTS Robot(RID INT AUTO_INCREMENT,x_pos INT,y_pos INT,dir VARCHAR(10),PRIMARY KEY(RID));");
-connection.query("CREATE TABLE IF NOT EXISTS PlanetData(DID INT AUTO_INCREMENT,RID INT,planet VARCHAR(20),timestamp DATETIME,temp DOUBLE,ground VARCHAR(10),x_pos INT,y_pos INT,PRIMARY KEY(DID),FOREIGN KEY(RID) REFERENCES Robot(RID));");
+connection.query("CREATE TABLE IF NOT EXISTS Robot(RID INT AUTO_INCREMENT,x_pos INT,y_pos INT,dir ENUM('NORTH','SOUTH','WEST','EAST'),PRIMARY KEY(RID));");
+connection.query("CREATE TABLE IF NOT EXISTS PlanetData(DID INT AUTO_INCREMENT,RID INT,planet VARCHAR(20),timestamp DATETIME,temp DOUBLE,ground ENUM('NICHTS','SAND','GEROELL','FELS','WASSER','PFLANZEN','MORAST','LAVA'),x_pos INT,y_pos INT,PRIMARY KEY(DID),FOREIGN KEY(RID) REFERENCES Robot(RID));");
 console.log("Tables created or exist.");
 
 const port = process.env.PORT || 8081;

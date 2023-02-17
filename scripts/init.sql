@@ -4,7 +4,12 @@ CREATE TABLE IF NOT EXISTS Robot(
   RID INT AUTO_INCREMENT,
   x_pos INT,
   y_pos INT,
-  dir VARCHAR(10),
+  dir ENUM(
+    'NORTH',
+    'SOUTH',
+    'WEST',
+    'EAST'
+  ),
   PRIMARY KEY(RID)
 );
 CREATE TABLE IF NOT EXISTS PlanetData(
@@ -13,7 +18,16 @@ CREATE TABLE IF NOT EXISTS PlanetData(
   planet VARCHAR(20),
   timestamp DATETIME,
   temp DOUBLE,
-  ground VARCHAR(10),
+  ground ENUM(
+    'NICHTS',
+    'SAND',
+    'GEROELL',
+    'FELS',
+    'WASSER',
+    'PFLANZEN',
+    'MORAST',
+    'LAVA'
+  ),
   x_pos INT,
   y_pos INT,
   PRIMARY KEY(DID),
