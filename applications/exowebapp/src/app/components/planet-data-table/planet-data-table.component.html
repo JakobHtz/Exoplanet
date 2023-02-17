@@ -1,1 +1,37 @@
-<p>planet-data-table works!</p>
+<table mat-table [dataSource]="planetData">
+    <ng-container matColumnDef="DID">
+        <th mat-header-cell *matHeaderCellDef> ID </th>
+        <td mat-cell *matCellDef="let element"> {{element.DID}} </td>
+    </ng-container>
+    <ng-container matColumnDef="RID">
+        <th mat-header-cell *matHeaderCellDef> Robot ID </th>
+        <td mat-cell *matCellDef="let element"> {{element.RID}} </td>
+    </ng-container>
+    <ng-container matColumnDef="planet">
+        <th mat-header-cell *matHeaderCellDef> Planet </th>
+        <td mat-cell *matCellDef="let element"> {{element.planet}} </td>
+    </ng-container>
+    <ng-container matColumnDef="timestamp">
+        <th mat-header-cell *matHeaderCellDef> Timestamp </th>
+        <td mat-cell *matCellDef="let element"> {{element.timestamp}} </td>
+    </ng-container>
+    <ng-container matColumnDef="temp">
+        <th mat-header-cell *matHeaderCellDef> Temp </th>
+        <td mat-cell *matCellDef="let element"> {{element.temp}} </td>
+      </ng-container>
+    <ng-container matColumnDef="ground">
+        <th mat-header-cell *matHeaderCellDef> Ground </th>
+        <td mat-cell *matCellDef="let element"> {{element.ground}} </td>
+    </ng-container>
+    <ng-container matColumnDef="x_pos">
+      <th mat-header-cell *matHeaderCellDef> X </th>
+      <td mat-cell *matCellDef="let element"> {{element.x_pos}} </td>
+    </ng-container>
+    <ng-container matColumnDef="y_pos">
+      <th mat-header-cell *matHeaderCellDef> Y </th>
+      <td mat-cell *matCellDef="let element"> {{element.y_pos}} </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  

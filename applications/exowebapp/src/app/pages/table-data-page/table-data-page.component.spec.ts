@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PlanetDataPageComponent } from './planet-data-page.component';
+import { TableDataPageComponent } from './table-data-page.component';
 
-describe('PlanetDataPageComponent', () => {
-  let component: PlanetDataPageComponent;
-  let fixture: ComponentFixture<PlanetDataPageComponent>;
+describe('TableDataPageComponent', () => {
+  let component: TableDataPageComponent;
+  let fixture: ComponentFixture<TableDataPageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PlanetDataPageComponent ]
+      declarations: [ TableDataPageComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(PlanetDataPageComponent);
+    fixture = TestBed.createComponent(TableDataPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

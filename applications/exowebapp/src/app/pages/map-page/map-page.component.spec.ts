@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RobotDataPageComponent } from './robot-data-page.component';
+import { MapPageComponent } from './map-page.component';
 
-describe('RobotDataPageComponent', () => {
-  let component: RobotDataPageComponent;
-  let fixture: ComponentFixture<RobotDataPageComponent>;
+describe('MapPageComponent', () => {
+  let component: MapPageComponent;
+  let fixture: ComponentFixture<MapPageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RobotDataPageComponent ]
+      declarations: [ MapPageComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(RobotDataPageComponent);
+    fixture = TestBed.createComponent(MapPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

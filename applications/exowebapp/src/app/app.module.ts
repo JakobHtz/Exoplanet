@@ -8,16 +8,16 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { UnknownPathComponent } from './pages/unknown-path/unknown-path.component';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
-import { RobotDataPageComponent } from './pages/robot-data-page/robot-data-page.component';
 import { MainHeaderComponent } from './components/main-header/main-header.component';
 import { PlanetDataTableComponent } from './components/planet-data-table/planet-data-table.component';
 import { RobotDataTableComponent } from './components/robot-data-table/robot-data-table.component';
-import { PlanetDataPageComponent } from './pages/planet-data-page/planet-data-page.component';
+import { TableDataPageComponent } from './pages/table-data-page/table-data-page.component';
+import { MapPageComponent } from './pages/map-page/map-page.component';
 
 const routes: Routes = [
   { path: 'home', component: LandingPageComponent },
-  { path: 'planet', component: PlanetDataPageComponent },
-  { path: 'robot', component: RobotDataPageComponent },
+  { path: 'tables', component: TableDataPageComponent },
+  { path: 'map', component: MapPageComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', component: UnknownPathComponent },
 ]
@@ -27,11 +27,11 @@ const routes: Routes = [
     AppComponent,
     UnknownPathComponent,
     LandingPageComponent,
-    RobotDataPageComponent,
     MainHeaderComponent,
     PlanetDataTableComponent,
     RobotDataTableComponent,
-    PlanetDataPageComponent
+    TableDataPageComponent,
+    MapPageComponent
   ],
   imports: [
     BrowserModule,
