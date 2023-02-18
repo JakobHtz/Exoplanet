@@ -13,6 +13,7 @@ import { PlanetDataTableComponent } from './components/planet-data-table/planet-
 import { RobotDataTableComponent } from './components/robot-data-table/robot-data-table.component';
 import { TableDataPageComponent } from './pages/table-data-page/table-data-page.component';
 import { MapPageComponent } from './pages/map-page/map-page.component';
+import { PlanetMapComponent } from './components/planet-map/planet-map.component';
 
 const routes: Routes = [
   { path: 'home', component: LandingPageComponent },
@@ -31,7 +32,8 @@ const routes: Routes = [
     PlanetDataTableComponent,
     RobotDataTableComponent,
     TableDataPageComponent,
-    MapPageComponent
+    MapPageComponent,
+    PlanetMapComponent
   ],
   imports: [
     BrowserModule,
