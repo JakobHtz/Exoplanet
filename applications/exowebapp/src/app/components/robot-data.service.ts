@@ -24,5 +24,5 @@ export class RobotDto {
   RID: number | undefined;
   x_pos: number | undefined;
   y_pos: number | undefined;
-  dir: String | undefined;
+  dir: 'NORTH'|'SOUTH'|'WEST'|'EAST' | undefined;
 }

@@ -1,17 +1,18 @@
 <section>
     <main class="flex flex-wrap">
         <ng-container *ngFor="let item of planetMap.map; index as i;">
-            <div class="h-16 w-16 rounded m-1 p-2 overflow-hidden" 
+            <div class="h-16 w-16 rounded m-1 p-2 overflow-hidden text-center text-sm" 
                 [ngClass]="{
-                    'bg-nichts':item=='UNKNOWN'||item=='NICHTS',
-                    'bg-wasser': item=='WASSER',
-                    'bg-sand': item=='SAND',
-                    'bg-geroell': item=='GEROELL',
-                    'bg-fels': item=='FELS',
-                    'bg-lava': item=='LAVA',
-                    'bg-pflanzen': item=='PFLANZEN',
-                    'bg-morast': item=='MORAST'
+                    'bg-nichts':item.planetData.ground=='UNKNOWN'||item.planetData.ground=='NICHTS',
+                    'bg-wasser': item.planetData.ground=='WASSER',
+                    'bg-sand': item.planetData.ground=='SAND',
+                    'bg-geroell': item.planetData.ground=='GEROELL',
+                    'bg-fels': item.planetData.ground=='FELS',
+                    'bg-lava': item.planetData.ground=='LAVA',
+                    'bg-pflanzen': item.planetData.ground=='PFLANZEN',
+                    'bg-morast': item.planetData.ground=='MORAST'
                 }">
+                {{ item.robotDir }}
             </div>
             <div [ngClass]="{'basis-full': i%planetMap.width == planetMap.width-1}"></div>
         </ng-container>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { PlanetDataDto, PlanetDataService } from '../planet-data.service';
+import { RobotDataService, RobotDto } from '../robot-data.service';
 
 @Component({
   selector: 'app-planet-map',
@@ -9,22 +10,27 @@ import { PlanetDataDto, PlanetDataService } from '../planet-data.service';
 export class PlanetMapComponent {
   planetData: PlanetDataDto[] = [];
   planetMap = new PlanetMap(5, 5);
+  robotData: RobotDto[] = [];
 
-  constructor(private planetDataService: PlanetDataService) {
-    this.planetDataService.getRobots().subscribe((data) => {
-      this.planetData = data;
-      for (let d of data) {
-        console.log(d.x_pos + " " + d.y_pos + " " + d.ground);
-        if (typeof d.x_pos != 'undefined' && typeof d.y_pos != 'undefined' && typeof d.ground != 'undefined') {
-          this.planetMap.addCoord(d.x_pos,d.y_pos,d.ground);
+  constructor(private planetDataService: PlanetDataService,private robotDataService: RobotDataService) {
+    this.planetDataService.getRobots().subscribe((planetData) => {
+      this.planetData = planetData;
+      this.robotDataService.getRobots().subscribe((robotData) => {
+        this.robotData = robotData;
+
+        for (let d of planetData) {
+          this.planetMap.addCoord(d);
         }
-      }
+        for (let d of robotData) {
+          this.planetMap.addRobotCoord(d);
+        }
+      });
     });
   }
 }
 
 class PlanetMap {
-  map: String[];
+  map: PlanetMapData[];
   width: number;
   height: number;
 
@@ -34,12 +40,36 @@ class PlanetMap {
     this.map = [];
     for (let i = 0; i < height; i++) {
       for (let j = 0; j < width; j++) {
-        this.map[j + i * width] = "UNKNOWN";
+        let tmpData = new PlanetDataDto();
+        tmpData.ground = "UNKNOWN";
+        tmpData.x_pos = j;
+        tmpData.y_pos = i;
+        let tmpMapData = new PlanetMapData(tmpData);
+        this.map[j + i * width] = tmpMapData;
       }
     }
   }
 
-  addCoord(x_pos: number, y_pos: number, value: String) {
-    this.map[x_pos + y_pos * this.width] = value;
+  addCoord(planetData: PlanetDataDto) {
+    if (typeof planetData.x_pos != 'undefined' && typeof planetData.y_pos != 'undefined' 
+        && planetData.x_pos < this.width && planetData.y_pos < this.height) {
+      this.map[planetData.x_pos + planetData.y_pos * this.width].planetData = planetData;
+    }
+  }
+
+  addRobotCoord(robot: RobotDto) {
+    if (typeof robot.x_pos != 'undefined' && typeof robot.y_pos != 'undefined' 
+        && robot.x_pos < this.width && robot.y_pos < this.height) {
+      this.map[robot.x_pos + robot.y_pos * this.width].robotDir = robot.dir;
+    }
+  }
+}
+
+class PlanetMapData {
+  planetData: PlanetDataDto;
+  robotDir: 'NORTH'|'SOUTH'|'WEST'|'EAST'| undefined;
+
+  constructor (planetData: PlanetDataDto) {
+    this.planetData = planetData;
   }
 }
