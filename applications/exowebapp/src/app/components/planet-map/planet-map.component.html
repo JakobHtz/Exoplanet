@@ -12,7 +12,10 @@
                     'bg-pflanzen': item.planetData.ground=='PFLANZEN',
                     'bg-morast': item.planetData.ground=='MORAST'
                 }">
-                <img src="{{ 'assets/' + item.robotDir + '.png' }}" alt="">
+                <div class="relative">
+                  <img *ngIf="item.robotDir" class="absolute" src="{{ 'assets/' + item.robotDir + '.png' }}">
+                  <span *ngIf="item.robotId" class="absolute custom-offset text-2xl text-rot">{{ item.robotId }}</span>
+                </div>
             </div>
             <div [ngClass]="{'basis-full': i%planetMap.width == planetMap.width-1}"></div>
         </ng-container>

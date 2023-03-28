@@ -51,16 +51,19 @@ class PlanetMap {
   }
 
   addCoord(planetData: PlanetDataDto) {
-    if (typeof planetData.x_pos != 'undefined' && typeof planetData.y_pos != 'undefined' 
+    if (typeof planetData.x_pos != 'undefined' && typeof planetData.y_pos != 'undefined'
         && planetData.x_pos < this.width && planetData.y_pos < this.height) {
-      this.map[planetData.x_pos + planetData.y_pos * this.width].planetData = planetData;
+      let mapTile = this.map[planetData.x_pos + planetData.y_pos * this.width];
+      mapTile.planetData = planetData;
     }
   }
 
   addRobotCoord(robot: RobotDto) {
-    if (typeof robot.x_pos != 'undefined' && typeof robot.y_pos != 'undefined' 
+    if (typeof robot.x_pos != 'undefined' && typeof robot.y_pos != 'undefined'
         && robot.x_pos < this.width && robot.y_pos < this.height) {
-      this.map[robot.x_pos + robot.y_pos * this.width].robotDir = robot.dir;
+      var mapTile = this.map[robot.x_pos + robot.y_pos * this.width];
+      mapTile.robotDir = robot.dir;
+      mapTile.robotId = robot.RID;
     }
   }
 }
@@ -68,6 +71,7 @@ class PlanetMap {
 class PlanetMapData {
   planetData: PlanetDataDto;
   robotDir: 'NORTH'|'SOUTH'|'WEST'|'EAST'| undefined;
+  robotId: number | undefined;
 
   constructor (planetData: PlanetDataDto) {
     this.planetData = planetData;

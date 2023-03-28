@@ -20,6 +20,7 @@ module.exports = {
       pflanzen: '#16a34a',
       morast: '#000000',
       lava: '#f59e0b',
+      rot: '#ff0000'
     },
     extend: {},
   },
