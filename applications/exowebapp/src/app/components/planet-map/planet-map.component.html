@@ -1,7 +1,7 @@
 <section>
     <main class="flex flex-wrap">
         <ng-container *ngFor="let item of planetMap.map; index as i;">
-            <div class="h-16 w-16 rounded m-1 p-2 overflow-hidden text-center text-sm" 
+            <div class="h-16 w-16 rounded m-1 p-2 overflow-hidden text-center text-sm"
                 [ngClass]="{
                     'bg-nichts':item.planetData.ground=='UNKNOWN'||item.planetData.ground=='NICHTS',
                     'bg-wasser': item.planetData.ground=='WASSER',
@@ -12,7 +12,7 @@
                     'bg-pflanzen': item.planetData.ground=='PFLANZEN',
                     'bg-morast': item.planetData.ground=='MORAST'
                 }">
-                {{ item.robotDir }}
+                <img src="{{ 'assets/' + item.robotDir + '.png' }}" alt="">
             </div>
             <div [ngClass]="{'basis-full': i%planetMap.width == planetMap.width-1}"></div>
         </ng-container>
