@@ -3,6 +3,10 @@
     <th mat-header-cell *matHeaderCellDef> ID </th>
     <td mat-cell *matCellDef="let element"> {{element.RID}} </td>
   </ng-container>
+  <ng-container matColumnDef="planet">
+    <th mat-header-cell *matHeaderCellDef> Planet </th>
+    <td mat-cell *matCellDef="let element"> {{element.planet}} </td>
+  </ng-container>
   <ng-container matColumnDef="x_pos">
     <th mat-header-cell *matHeaderCellDef> X </th>
     <td mat-cell *matCellDef="let element"> {{element.x_pos}} </td>

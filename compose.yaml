@@ -18,6 +18,7 @@ services:
 
   exodbweb: 
     image: exodbweb
+    build: ./microservices/exodbweb
     depends_on:
       - mariadb
     ports:

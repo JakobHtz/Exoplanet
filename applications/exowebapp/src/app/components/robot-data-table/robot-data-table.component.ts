@@ -8,7 +8,7 @@ import { RobotDataService, RobotDto } from '../robot-data.service';
 })
 export class RobotDataTableComponent {
   robotData: RobotDto[] = [];
-  displayedColumns: string[] = ['RID', 'x_pos', 'y_pos', 'dir'];
+  displayedColumns: string[] = ['RID', 'planet', 'x_pos', 'y_pos', 'dir'];
 
   constructor(private robotDataService: RobotDataService) {
     this.robotDataService.getRobots().subscribe((data) => {

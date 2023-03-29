@@ -22,6 +22,8 @@ export class RobotDataService {
 
 export class RobotDto {
   RID: number | undefined;
+  thread_id: number | undefined;
+  planet: string | undefined;
   x_pos: number | undefined;
   y_pos: number | undefined;
   dir: 'NORTH'|'SOUTH'|'WEST'|'EAST' | undefined;

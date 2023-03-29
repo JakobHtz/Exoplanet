@@ -24,9 +24,9 @@ export class PlanetDataDto {
   DID: number | undefined;
   RID: number | undefined;
   planet: String | undefined;
-  timestamp: String | undefined;
-  ground: String | undefined;
+  scan_timestamp: String | undefined;
   temp: number | undefined;
+  ground: String | undefined;
   x_pos: number | undefined;
   y_pos: number | undefined;
 }
