@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table';
+import {MatMenuModule} from '@angular/material/menu';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
@@ -14,6 +15,7 @@ import { RobotDataTableComponent } from './components/robot-data-table/robot-dat
 import { TableDataPageComponent } from './pages/table-data-page/table-data-page.component';
 import { MapPageComponent } from './pages/map-page/map-page.component';
 import { PlanetMapComponent } from './components/planet-map/planet-map.component';
+import { PlanetDropDownComponent } from './components/planet-drop-down/planet-drop-down.component';
 
 const routes: Routes = [
   { path: 'home', component: LandingPageComponent },
@@ -33,7 +35,8 @@ const routes: Routes = [
     RobotDataTableComponent,
     TableDataPageComponent,
     MapPageComponent,
-    PlanetMapComponent
+    PlanetMapComponent,
+    PlanetDropDownComponent
   ],
   imports: [
     BrowserModule,
@@ -41,6 +44,7 @@ const routes: Routes = [
     NoopAnimationsModule,
     HttpClientModule,
     MatTableModule,
+    MatMenuModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

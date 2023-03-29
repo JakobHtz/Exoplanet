@@ -12,8 +12,13 @@ export class RobotDataService {
 
   constructor(private http: HttpClient) {}
 
-  getRobots(): Observable<RobotDto[]> {
-    return this.http.get<RobotDto[]>("http://"+this.EXODBWEB_ADDR+":"+this.EXODBWEB_PORT+"/robots")
+  getRobots(planet: string | undefined): Observable<RobotDto[]> {
+    let searchString = "http://"+this.EXODBWEB_ADDR+":"+this.EXODBWEB_PORT+"/robots";
+    if (planet && planet != '') {
+      searchString += "?planet=" + planet;
+    }
+    console.log("Fetch Data at " + searchString);
+    return this.http.get<RobotDto[]>(searchString)
       .pipe(
         map((response: RobotDto[]) => {return response}),
       );

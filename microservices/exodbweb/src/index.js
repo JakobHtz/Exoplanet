@@ -18,15 +18,16 @@ const connection = mysql.createConnection({
 console.log("Connecting to " + hostaddr);
 connection.connect();
 
+connection.query("DROP DATABASE " + database + ";");
 connection.query("CREATE DATABASE IF NOT EXISTS " + database + ";");
 console.log("Database created or exists.");
 
 connection.query('USE ' + database + ";");
 console.log("Database used: " + database);
 
-connection.query("CREATE TABLE IF NOT EXISTS Robot(RID INT AUTO_INCREMENT,x_pos INT,y_pos INT,dir ENUM('NORTH','SOUTH','WEST','EAST'),PRIMARY KEY(RID));");
 connection.query("CREATE TABLE IF NOT EXISTS Planet(PID INT AUTO_INCREMENT,planet_name VARCHAR(20),x_size INT,y_size INT,PRIMARY KEY(PID));");
-connection.query("CREATE TABLE IF NOT EXISTS PlanetData(DID INT AUTO_INCREMENT,RID INT,planet INT,scan_timestamp DATETIME,temp DOUBLE,ground ENUM('NICHTS','SAND','GEROELL','FELS','WASSER','PFLANZEN','MORAST','LAVA'),x_pos INT,y_pos INT,PRIMARY KEY(DID),FOREIGN KEY(RID) REFERENCES Robot(RID),FOREIGN KEY(PID) REFERENCES Planet(PID));");
+connection.query("CREATE TABLE IF NOT EXISTS Robot(RID INT AUTO_INCREMENT, thread_id INT, PID INT,x_pos INT,y_pos INT,dir ENUM('NORTH','SOUTH','WEST','EAST'),PRIMARY KEY(RID),FOREIGN KEY(PID) REFERENCES Planet(PID));");
+connection.query("CREATE TABLE IF NOT EXISTS PlanetData(DID INT AUTO_INCREMENT,RID INT,PID INT,scan_timestamp DATETIME,temp DOUBLE,ground ENUM('NICHTS','SAND','GEROELL','FELS','WASSER','PFLANZEN','MORAST','LAVA'),x_pos INT,y_pos INT,PRIMARY KEY(DID),FOREIGN KEY(RID) REFERENCES Robot(RID),FOREIGN KEY(PID) REFERENCES Planet(PID));");
 console.log("Tables created or exist.");
 
 const port = process.env.PORT || 8081;

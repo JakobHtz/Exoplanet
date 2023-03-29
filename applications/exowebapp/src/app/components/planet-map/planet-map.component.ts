@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { PlanetDataDto, PlanetDataService } from '../planet-data.service';
+import { PlanetDto } from '../planet.service';
 import { RobotDataService, RobotDto } from '../robot-data.service';
 
 @Component({
@@ -7,15 +8,24 @@ import { RobotDataService, RobotDto } from '../robot-data.service';
   templateUrl: './planet-map.component.html',
   styleUrls: ['./planet-map.component.sass']
 })
-export class PlanetMapComponent {
+export class PlanetMapComponent implements OnInit{
   planetData: PlanetDataDto[] = [];
   planetMap = new PlanetMap(5, 5);
   robotData: RobotDto[] = [];
 
-  constructor(private planetDataService: PlanetDataService,private robotDataService: RobotDataService) {
-    this.planetDataService.getRobots().subscribe((planetData) => {
+  constructor(private planetDataService: PlanetDataService,private robotDataService: RobotDataService) {}
+
+  ngOnInit(): void {
+    let planet= new PlanetDto();
+    planet.planet_name = "";
+    this.updateMap(planet);
+  }
+
+  updateMap(planet: PlanetDto | undefined) {
+    this.planetMap = new PlanetMap(planet?.x_size, planet?.y_size);
+    this.planetDataService.getPlanetData(planet?.planet_name).subscribe((planetData) => {
       this.planetData = planetData;
-      this.robotDataService.getRobots().subscribe((robotData) => {
+      this.robotDataService.getRobots(planet?.planet_name).subscribe((robotData) => {
         this.robotData = robotData;
 
         for (let d of planetData) {
@@ -34,18 +44,18 @@ class PlanetMap {
   width: number;
   height: number;
 
-  constructor (width: number, height: number) {
-    this.width = width;
-    this.height = height;
+  constructor (width: number | undefined, height: number | undefined) {
+    this.width = width? width: 0;
+    this.height = height? height: 0;
     this.map = [];
-    for (let i = 0; i < height; i++) {
-      for (let j = 0; j < width; j++) {
+    for (let i = 0; i < this.height; i++) {
+      for (let j = 0; j < this.width; j++) {
         let tmpData = new PlanetDataDto();
         tmpData.ground = "UNKNOWN";
         tmpData.x_pos = j;
         tmpData.y_pos = i;
         let tmpMapData = new PlanetMapData(tmpData);
-        this.map[j + i * width] = tmpMapData;
+        this.map[j + i * this.width] = tmpMapData;
       }
     }
   }
