@@ -22,18 +22,19 @@ export class PlanetMapComponent implements OnInit{
   }
 
   updateMap(planet: PlanetDto | undefined) {
-    this.planetMap = new PlanetMap(planet?.x_size, planet?.y_size);
+    let newMap = new PlanetMap(planet?.x_size, planet?.y_size);
     this.planetDataService.getPlanetData(planet?.planet_name).subscribe((planetData) => {
       this.planetData = planetData;
       this.robotDataService.getRobots(planet?.planet_name).subscribe((robotData) => {
         this.robotData = robotData;
 
         for (let d of planetData) {
-          this.planetMap.addCoord(d);
+          newMap.addCoord(d);
         }
         for (let d of robotData) {
-          this.planetMap.addRobotCoord(d);
+          newMap.addRobotCoord(d);
         }
+        this.planetMap = newMap;
       });
     });
   }
@@ -73,7 +74,7 @@ class PlanetMap {
         && robot.x_pos < this.width && robot.y_pos < this.height) {
       var mapTile = this.map[robot.x_pos + robot.y_pos * this.width];
       mapTile.robotDir = robot.dir;
-      mapTile.robotId = robot.RID;
+      mapTile.robotId = robot.thread_id;
     }
   }
 }

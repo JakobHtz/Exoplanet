@@ -36,7 +36,7 @@ const routes: Routes = [
     TableDataPageComponent,
     MapPageComponent,
     PlanetMapComponent,
-    PlanetDropDownComponent
+    PlanetDropDownComponent,
   ],
   imports: [
     BrowserModule,

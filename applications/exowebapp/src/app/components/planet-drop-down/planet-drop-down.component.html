@@ -1,9 +1,9 @@
 <section>
-  <span class="bg-primary-800 p-1 text-neutral-50 rounded">
+  <span (click)="onClick()" class="bg-primary-800 p-1 text-neutral-50 rounded">
     <button mat-button [matMenuTriggerFor]="menu">{{ getSelectedPlanetName() }}</button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item (click)="onClick(null)">ALL</button>
-      <button mat-menu-item (click)="onClick(planet)" *ngFor="let planet of planets">{{ planet.planet_name }}</button>
+      <button mat-menu-item (click)="onSelect(null)">ALL</button>
+      <button mat-menu-item (click)="onSelect(planet)" *ngFor="let planet of planets">{{ planet.planet_name }}</button>
     </mat-menu>
   </span>
 </section>
