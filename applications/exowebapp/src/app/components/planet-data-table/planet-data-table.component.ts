@@ -9,7 +9,7 @@ import { PlanetDto } from '../planet.service';
 })
 export class PlanetDataTableComponent {
   planetData: PlanetDataDto[] = [];
-  displayedColumns: string[] = ['DID', 'RID', 'planet', 'timestamp', 'temp', 'ground', 'x_pos', 'y_pos'];
+  displayedColumns: string[] = ['DID', 'planet', 'timestamp', 'temp', 'ground', 'x_pos', 'y_pos'];
 
   planet: PlanetDto | undefined;
 

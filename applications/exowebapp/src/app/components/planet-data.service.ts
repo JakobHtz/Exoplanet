@@ -27,7 +27,6 @@ export class PlanetDataService {
 
 export class PlanetDataDto {
   DID: number | undefined;
-  RID: number | undefined;
   planet: String | undefined;
   scan_timestamp: String | undefined;
   temp: number | undefined;
